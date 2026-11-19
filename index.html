@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial Desarrollo Móvil | Control de Versiones, Persistencia, Sensores y más</title>
+  <meta name="description" content="Tutorial completo y fácil de entender sobre control de versiones, persistencia de datos, sensores, multimedia, servicios, librerías y depuración en desarrollo de aplicaciones móviles.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Fondo Matrix / partículas -->
+  <canvas id="matrix-bg"></canvas>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon">◆</div>
+        <div class="logo-text">
+          <span class="logo-title">MOBILE DEV</span>
+          <span class="logo-sub">TUTORIAL SYSTEM v1.0</span>
+        </div>
+      </div>
+      <nav class="nav-desktop">
+        <a href="#inicio" class="nav-link active">Inicio</a>
+        <a href="#control-versiones" class="nav-link">Versiones</a>
+        <a href="#persistencia" class="nav-link">Persistencia</a>
+        <a href="#sensores" class="nav-link">Sensores</a>
+        <a href="#multimedia" class="nav-link">Multimedia</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#librerias" class="nav-link">Librerías</a>
+        <a href="#depuracion" class="nav-link">Depuración</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Menú móvil -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#inicio" class="mobile-link">Inicio</a>
+    <a href="#control-versiones" class="mobile-link">Control de Versiones</a>
+    <a href="#persistencia" class="mobile-link">Persistencia y Datos</a>
+    <a href="#sensores" class="mobile-link">Gestión de Sensores</a>
+    <a href="#multimedia" class="mobile-link">Recursos Multimedia</a>
+    <a href="#servicios" class="mobile-link">Servicios y Notificaciones</a>
+    <a href="#librerias" class="mobile-link">Librerías y Toolkits</a>
+    <a href="#depuracion" class="mobile-link">Depuración y Seguridad</a>
+  </div>
+
+  <div class="layout">
+    <!-- Sidebar izquierda -->
+    <aside class="sidebar sidebar-left">
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-icon">▣</span>
+          <span>NAVEGACIÓN</span>
+        </div>
+        <ul class="side-nav">
+          <li><a href="#inicio" data-section="inicio"><span class="nav-num">01</span> Inicio</a></li>
+          <li><a href="#control-versiones" data-section="control-versiones"><span class="nav-num">02</span> Control de Versiones</a></li>
+          <li><a href="#persistencia" data-section="persistencia"><span class="nav-num">03</span> Persistencia</a></li>
+          <li><a href="#sensores" data-section="sensores"><span class="nav-num">04</span> Sensores</a></li>
+          <li><a href="#multimedia" data-section="multimedia"><span class="nav-num">05</span> Multimedia</a></li>
+          <li><a href="#servicios" data-section="servicios"><span class="nav-num">06</span> Servicios</a></li>
+          <li><a href="#librerias" data-section="librerias"><span class="nav-num">07</span> Librerías</a></li>
+          <li><a href="#depuracion" data-section="depuracion"><span class="nav-num">08</span> Depuración</a></li>
+        </ul>
+      </div>
+
+      <div class="panel status-panel">
+        <div class="panel-header">
+          <span class="panel-icon">◈</span>
+          <span>SISTEMA</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Estado</span>
+          <span class="status-value online">ONLINE</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Temas</span>
+          <span class="status-value">7 / 7</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Progreso</span>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+      <!-- INICIO -->
+      <section id="inicio" class="section active">
+        <div class="section-header">
+          <h1>Tutorial de Desarrollo Móvil</h1>
+          <p class="section-subtitle">Guía completa, clara y paso a paso para entender las bases del desarrollo de aplicaciones móviles</p>
+        </div>
+
+        <!-- Visual cyberpunk: sistema -->
+        <div class="visual-panel">
+          <div class="visual-label"><span>◆</span> SYSTEM ONLINE · MOBILE DEV TUTORIAL v1.0</div>
+          <div class="visual-content">
+            <div class="orbit-ring">
+              <div class="orbit-core"></div>
+            </div>
+            <div class="hud-bars" aria-hidden="true">
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+            </div>
+            <div class="toolkit-row">
+              <span class="toolkit-badge">HTML</span>
+              <span class="toolkit-badge">CSS</span>
+              <span class="toolkit-badge">JS</span>
+              <span class="toolkit-badge">7 TEMAS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-card">
+            <div class="hero-icon">01</div>
+            <h3>Control de Versiones</h3>
+            <p>Cómo guardar el historial de cambios de tu código y trabajar en equipo sin perder nada.</p>
+          </div>
+          <div class="hero-card">
+            <div class="hero-icon">02</div>
+            <h3>Persistencia de Datos</h3>
+            <p>Dónde y cómo guardar información en el móvil: archivos, bases de datos locales y en la nube.</p>
+          </div>
+          <div class="hero-card">
+            <div class="hero-icon">03</div>
+            <h3>Sensores</h3>
+            <p>Acelerómetro, GPS, giroscopio… cómo usar los sensores del teléfono en tus apps.</p>
+          </div>
+          <div class="hero-card">
+            <div class="hero-icon">04</div>
+            <h3>Multimedia</h3>
+            <p>Imágenes, audio, video y animaciones: dónde se guardan y cómo se usan.</p>
+          </div>
+          <div class="hero-card">
+            <div class="hero-icon">05</div>
+            <h3>Servicios y Notificaciones</h3>
+            <p>Tareas en segundo plano, notificaciones y servicios en la nube.</p>
+          </div>
+          <div class="hero-card">
+            <div class="hero-icon">06</div>
+            <h3>Librerías y Toolkits</h3>
+            <p>Qué son, para qué sirven y las más usadas en desarrollo móvil.</p>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <h3>¿Cómo usar este tutorial?</h3>
+          <ol>
+            <li>Usa el menú de la izquierda (o el menú hamburguesa en móvil) para navegar entre temas.</li>
+            <li>Cada sección tiene explicación sencilla + pasos prácticos + ejemplos.</li>
+            <li>Al final de cada tema encontrarás <strong>fuentes y enlaces</strong> para profundizar.</li>
+            <li>El diseño es responsivo: funciona en móvil, tablet y computadora.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- CONTROL DE VERSIONES -->
+      <section id="control-versiones" class="section">
+        <div class="section-header">
+          <span class="section-num">02</span>
+          <h2>Control de Versiones</h2>
+          <p class="section-subtitle">La herramienta que guarda el historial de tu código y te permite trabajar en equipo sin caos</p>
+        </div>
+
+        <!-- Visual cyberpunk: control de versiones -->
+        <div class="visual-panel">
+          <div class="visual-label"><span>◆</span> VERSION CONTROL · GIT FLOW</div>
+          <div class="visual-content">
+            <div class="diagram">
+              <div class="diag-branch">
+                <div class="diag-node">feature/login</div>
+                <div class="diag-node">feature/api</div>
+              </div>
+              <span class="diag-arrow">→</span>
+              <div class="diag-node main">main / master</div>
+              <span class="diag-arrow">→</span>
+              <div class="diag-branch">
+                <div class="diag-node">release/v1.0</div>
+                <div class="diag-node">hotfix/bug</div>
+              </div>
+            </div>
+            <div class="hud-bars" aria-hidden="true">
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>1. ¿Qué es el control de versiones?</h3>
+          <p>Imagina que estás escribiendo un documento importante y cada vez que guardas se crea una copia con fecha y hora. Así puedes volver a cualquier versión anterior si algo sale mal.</p>
+          <p>El <strong>control de versiones</strong> (VCS – Version Control System) hace exactamente eso, pero con el código de tu aplicación. Registra quién cambió qué, cuándo y por qué. Permite:</p>
+          <ul>
+            <li>Volver a una versión anterior si algo se rompe.</li>
+            <li>Trabajar varias personas al mismo tiempo sin pisarse el trabajo.</li>
+            <li>Ver el historial completo de cambios.</li>
+            <li>Crear “ramas” (versiones paralelas) para probar ideas sin afectar el código principal.</li>
+          </ul>
+        </div>
+
+        <div class="content-block">
+          <h3>2. ¿Cuáles son los tipos principales?</h3>
+          <p>Existen dos grandes familias:</p>
+
+          <div class="card-grid">
+            <div class="card">
+              <div class="card-title">Centralizados (CVCS)</div>
+              <p>Hay un solo servidor central. Todos los desarrolladores descargan el código de ahí y suben los cambios al mismo servidor.</p>
+              <p><strong>Ejemplos:</strong> SVN (Subversion), CVS.</p>
+            </div>
+            <div class="card">
+              <div class="card-title">Distribuidos (DVCS)</div>
+              <p>Cada desarrollador tiene una copia completa del historial en su computadora. Puedes trabajar sin internet y luego sincronizar.</p>
+              <p><strong>Ejemplos:</strong> Git, Mercurial.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>3. Características, ventajas y desventajas</h3>
+
+          <h4>Git (el más usado hoy)</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr><th>Aspecto</th><th>Detalle</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Tipo</td><td>Distribuido</td></tr>
+                <tr><td>Ventajas</td><td>Muy rápido, ramas baratas, trabajo offline, gran ecosistema (GitHub, GitLab…)</td></tr>
+                <tr><td>Desventajas</td><td>Curva de aprendizaje un poco más alta al principio</td></tr>
+                <tr><td>Uso ideal</td><td>Proyectos de cualquier tamaño, equipos distribuidos, open source</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>SVN (Subversion)</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr><th>Aspecto</th><th>Detalle</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Tipo</td><td>Centralizado</td></tr>
+                <tr><td>Ventajas</td><td>Más simple de entender, buen control de permisos por carpetas</td></tr>
+                <tr><td>Desventajas</td><td>Necesitas conexión para hacer commit, más lento en proyectos grandes</td></tr>
+                <tr><td>Uso ideal</td><td>Equipos que prefieren un flujo lineal y control centralizado</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Mercurial</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr><th>Aspecto</th><th>Detalle</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Tipo</td><td>Distribuido</td></tr>
+                <tr><td>Ventajas</td><td>Interfaz más sencilla que Git, muy rápido</td></tr>
+                <tr><td>Desventajas</td><td>Menos popular → menos herramientas y comunidad</td></tr>
+                <tr><td>Uso ideal</td><td>Quienes quieren un sistema distribuido pero más simple</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>4. ¿Cómo funciona? (explicación sencilla)</h3>
+          <p>Tomemos <strong>Git</strong> como ejemplo (es el estándar actual):</p>
+          <ol class="steps">
+            <li><strong>Repositorio (repo)</strong>: la carpeta donde Git guarda todo el historial.</li>
+            <li><strong>Working directory</strong>: los archivos con los que estás trabajando ahora.</li>
+            <li><strong>Staging area</strong>: “zona de preparación”. Aquí eliges qué cambios quieres guardar.</li>
+            <li><strong>Commit</strong>: guardas un “snapshot” (foto) de los cambios con un mensaje explicativo.</li>
+            <li><strong>Push</strong>: subes tus commits al servidor remoto (GitHub, GitLab, etc.).</li>
+            <li><strong>Pull / Fetch</strong>: bajas los cambios que otros hayan subido.</li>
+          </ol>
+        </div>
+
+        <div class="content-block">
+          <h3>5. Cómo se usa para rastrear y gestionar cambios</h3>
+          <p>Pasos típicos de un día de trabajo con Git:</p>
+          <div class="code-block">
+            <pre><code># 1. Ver el estado de tus archivos
+git status
+
+# 2. Agregar archivos al staging
+git add archivo.js
+# o todos los cambios:
+git add .
+
+# 3. Guardar el commit con un mensaje claro
+git commit -m "Agrega pantalla de login"
+
+# 4. Subir al servidor
+git push origin main
+
+# 5. Crear una rama para una nueva función
+git checkout -b feature/notificaciones
+
+# 6. Volver a la rama principal y fusionar
+git checkout main
+git merge feature/notificaciones</code></pre>
+          </div>
+          <p>Cada commit queda registrado con autor, fecha y mensaje. Puedes ver el historial con <code>git log</code> y volver a cualquier commit anterior.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>6. Ejemplos reales</h3>
+          <ul>
+            <li><strong>Git + GitHub</strong>: la combinación más usada del mundo. Millones de proyectos open source y empresas.</li>
+            <li><strong>Git + GitLab</strong>: muy usado en empresas (incluye CI/CD integrado).</li>
+            <li><strong>SVN</strong>: todavía se encuentra en muchas empresas tradicionales y proyectos legacy.</li>
+            <li><strong>Bitbucket</strong>: repositorios Git y Mercurial (ahora principalmente Git).</li>
+          </ul>
+        </div>
+
+        <div class="sources">
+          <h4>Fuentes y referencias</h4>
+          <ul>
+            <li><a href="https://git-scm.com/book/es/v2" target="_blank" rel="noopener">Pro Git Book (oficial, en español)</a></li>
+            <li><a href="https://welearndata.com/git/control-de-versiones-que-es-tipos-herramientas/" target="_blank" rel="noopener">Control de Versiones: qué es, tipos y herramientas</a></li>
+            <li><a href="https://www.w3docs.com/learn-git/version-control-software" target="_blank" rel="noopener">Version Control Software – W3Docs</a></li>
+            <li><a href="https://git-scm.com/doc" target="_blank" rel="noopener">Documentación oficial de Git</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- PERSISTENCIA -->
+      <section id="persistencia" class="section">
+        <div class="section-header">
+          <span class="section-num">03</span>
+          <h2>Persistencia y Acceso a Datos</h2>
+          <p class="section-subtitle">Cómo guardar y recuperar información en aplicaciones móviles</p>
+        </div>
+
+        <!-- Visual cyberpunk: persistencia -->
+        <div class="visual-panel">
+          <div class="visual-label"><span>◆</span> DATA PERSISTENCE · LOCAL / CLOUD</div>
+          <div class="visual-content">
+            <div class="diagram">
+              <div class="diag-node">Archivos</div>
+              <span class="diag-arrow">·</span>
+              <div class="diag-node main">SQLite / Room</div>
+              <span class="diag-arrow">·</span>
+              <div class="diag-node">API REST</div>
+            </div>
+            <div class="cloud-stack">
+              <div class="cloud-layer">APP MÓVIL</div>
+              <div class="cloud-layer">BD LOCAL</div>
+              <div class="cloud-layer">NUBE / SERVIDOR</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>1. ¿Qué es la persistencia de datos?</h3>
+          <p>La <strong>persistencia</strong> es la capacidad de una aplicación de <em>guardar información de forma permanente</em>, de modo que no se pierda cuando cierras la app o apagas el teléfono.</p>
+          <p>Sin persistencia, cada vez que abrieras la app empezarías de cero (sin preferencias, sin historial, sin datos del usuario).</p>
+        </div>
+
+        <div class="content-block">
+          <h3>2. Características principales</h3>
+          <ul>
+            <li><strong>Durabilidad</strong>: los datos sobreviven al cierre de la app y al reinicio del dispositivo.</li>
+            <li><strong>Acceso rápido</strong>: especialmente importante en móvil (batería y rendimiento).</li>
+            <li><strong>Seguridad</strong>: los datos sensibles deben estar protegidos (cifrado, permisos).</li>
+            <li><strong>Capacidad offline</strong>: muchas apps deben funcionar sin internet.</li>
+            <li><strong>Sincronización</strong>: poder combinar datos locales con datos en la nube.</li>
+          </ul>
+        </div>
+
+        <div class="content-block">
+          <h3>3. Formas de persistencia en dispositivos móviles</h3>
+
+          <div class="card-grid">
+            <div class="card">
+              <div class="card-title">A) Archivos</div>
+              <p>Guardar información en archivos de texto, JSON, XML o binarios dentro del almacenamiento del dispositivo.</p>
+              <p><strong>Ejemplos:</strong> preferencias del usuario, caché de imágenes, logs, archivos de configuración.</p>
+              <p><strong>Ventaja:</strong> simple. <strong>Desventaja:</strong> difícil de consultar y relacionar datos complejos.</p>
+            </div>
+            <div class="card">
+              <div class="card-title">B) Bases de datos locales</div>
+              <p>El rey es <strong>SQLite</strong> (viene incluido en Android e iOS). También existen Room (Android), Core Data (iOS), Realm, etc.</p>
+              <p>Permiten guardar datos estructurados (tablas, relaciones) y hacer consultas potentes.</p>
+              <p><strong>Ideal para:</strong> listas de productos, historial, datos de usuario offline.</p>
+            </div>
+            <div class="card">
+              <div class="card-title">C) Bases de datos remotas (servicios web)</div>
+              <p>Los datos viven en un servidor (Firebase, AWS, un backend propio). La app se conecta por internet (API REST, GraphQL…).</p>
+              <p><strong>Ventaja:</strong> los datos están centralizados y accesibles desde cualquier dispositivo. <strong>Desventaja:</strong> necesita conexión.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>4. Tipos de datos según la forma de persistencia</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Forma</th>
+                  <th>Tipos de datos típicos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Archivos</td>
+                  <td>Texto, JSON, imágenes, audio, video, preferencias clave-valor</td>
+                </tr>
+                <tr>
+                  <td>BD local (SQLite/Room)</td>
+                  <td>Datos estructurados: usuarios, productos, mensajes, historial, relaciones</td>
+                </tr>
+                <tr>
+                  <td>Remoto (API / nube)</td>
+                  <td>Cualquier dato que deba compartirse entre dispositivos o usuarios</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>5. Mecanismos de control de acceso a medios persistentes</h3>
+          <ul>
+            <li><strong>Bibliotecas de clases</strong>: las APIs del sistema (SharedPreferences en Android, UserDefaults en iOS) para datos simples.</li>
+            <li><strong>Clases de SQLite</strong>: acceso directo con SQL (más control, más código).</li>
+            <li><strong>Mapeo relacional de objetos (ORM)</strong>: Room (Android), Core Data, Realm… convierten tablas en objetos de tu lenguaje. Escribes menos SQL y el código es más legible.</li>
+          </ul>
+        </div>
+
+        <div class="content-block">
+          <h3>6. Proceso de autenticación y consumo de servicios web</h3>
+          <p>Pasos típicos cuando una app móvil habla con un servidor:</p>
+          <ol class="steps">
+            <li><strong>Autenticación</strong>: el usuario inicia sesión (usuario/contraseña, Google, Apple…). El servidor devuelve un <em>token</em> (JWT u otro).</li>
+            <li><strong>Guardar el token</strong> de forma segura en el dispositivo (Keychain / EncryptedSharedPreferences).</li>
+            <li><strong>Hacer peticiones</strong>: cada vez que la app necesita datos, envía el token en la cabecera de la petición HTTP.</li>
+            <li><strong>Recibir y procesar</strong>: la app recibe JSON (o XML), lo convierte en objetos y lo muestra o guarda localmente.</li>
+            <li><strong>Refresco de token</strong>: cuando el token expira, se pide uno nuevo (refresh token).</li>
+          </ol>
+          <p>Herramientas comunes: Retrofit / OkHttp (Android), URLSession / Alamofire (iOS), Axios o fetch en apps híbridas.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>7. Ejemplos prácticos</h3>
+          <ul>
+            <li><strong>SharedPreferences / UserDefaults</strong>: guardar si el usuario ya vio el tutorial de bienvenida.</li>
+            <li><strong>SQLite + Room</strong>: app de notas o lista de tareas que funciona sin internet.</li>
+            <li><strong>Firebase Realtime Database / Firestore</strong>: chat en tiempo real.</li>
+            <li><strong>API REST propia</strong>: app de e-commerce que consulta productos y pedidos en un servidor.</li>
+          </ul>
+        </div>
+
+        <div class="sources">
+          <h4>Fuentes y referencias</h4>
+          <ul>
+            <li><a href="https://developer.android.com/training/data-storage" target="_blank" rel="noopener">Android – Data storage</a></li>
+            <li><a href="https://developer.apple.com/documentation/coredata" target="_blank" rel="noopener">Apple – Core Data</a></li>
+            <li><a href="https://www.sqlite.org/index.html" target="_blank" rel="noopener">SQLite oficial</a></li>
+            <li><a href="https://androidayuda.com/android/general/los-mejores-gestores-de-bases-de-datos-sql-y-nosql-para-programadores-en-movilidad/" target="_blank" rel="noopener">Gestores de BD para movilidad</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SENSORES -->
+      <section id="sensores" class="section">
+        <div class="section-header">
+          <span class="section-num">04</span>
+          <h2>Gestión de Sensores</h2>
+          <p class="section-subtitle">Cómo usar los sensores del teléfono en tus aplicaciones</p>
+        </div>
+
+        <!-- Visual cyberpunk: sensores -->
+        <div class="visual-panel">
+          <div class="visual-label"><span>◆</span> SENSOR ARRAY · DEVICE INPUT</div>
+          <div class="visual-content">
+            <div class="orbit-ring">
+              <div class="orbit-core"></div>
+            </div>
+            <div class="sensor-grid">
+              <div class="sensor-item"><span class="sensor-icon">📡</span><span class="sensor-name">GPS</span></div>
+              <div class="sensor-item"><span class="sensor-icon">📐</span><span class="sensor-name">GIROSCOPIO</span></div>
+              <div class="sensor-item"><span class="sensor-icon">⬇️</span><span class="sensor-name">ACELERÓMETRO</span></div>
+              <div class="sensor-item"><span class="sensor-icon">🧭</span><span class="sensor-name">BRÚJULA</span></div>
+              <div class="sensor-item"><span class="sensor-icon">💡</span><span class="sensor-name">LUZ</span></div>
+              <div class="sensor-item"><span class="sensor-icon">📍</span><span class="sensor-name">PROXIMIDAD</span></div>
+              <div class="sensor-item"><span class="sensor-icon">🌡️</span><span class="sensor-name">TEMP</span></div>
+              <div class="sensor-item"><span class="sensor-icon">👆</span><span class="sensor-name">HUELLA</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>1. ¿Qué son los sensores?</h3>
+          <p>Los <strong>sensores</strong> son componentes de hardware del dispositivo que miden el mundo físico: movimiento, orientación, luz, ubicación, presión, etc. Las apps pueden leer esos valores y reaccionar (por ejemplo, girar la pantalla, contar pasos o mostrar el mapa).</p>
+        </div>
+
+        <div class="content-block">
+          <h3>2. Tipos de sensores en dispositivos móviles</h3>
+          <div class="card-grid">
+            <div class="card">
+              <div class="card-title">Movimiento</div>
+              <ul>
+                <li>Acelerómetro</li>
+                <li>Giroscopio</li>
+                <li>Sensor de gravedad</li>
+                <li>Sensor de rotación</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-title">Posición</div>
+              <ul>
+                <li>Magnetómetro (brújula)</li>
+                <li>GPS / GNSS</li>
+                <li>Proximidad</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-title">Ambientales</div>
+              <ul>
+                <li>Luz ambiental</li>
+                <li>Presión (barómetro)</li>
+                <li>Temperatura</li>
+                <li>Humedad</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-title">Otros</div>
+              <ul>
+                <li>Huella dactilar / Face ID</li>
+                <li>Sensor de frecuencia cardíaca</li>
+                <li>Micrófono y cámara (también se consideran sensores de entrada)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>3. Proceso de gestión de sensores (paso a paso)</h3>
+          <ol class="steps">
+            <li>
+              <strong>Declarar permisos</strong><br>
+              En Android se declaran en el <code>AndroidManifest.xml</code>. En iOS en el archivo <code>Info.plist</code>. Algunos sensores (ubicación, cámara, micrófono) requieren permiso explícito del usuario.
+            </li>
+            <li>
+              <strong>Habilitar / obtener el sensor</strong><br>
+              Se pide al sistema el sensor deseado (por ejemplo <code>Sensor.TYPE_ACCELEROMETER</code> en Android o <code>CMMotionManager</code> en iOS).
+            </li>
+            <li>
+              <strong>Registrar un listener / callback</strong><br>
+              La app se “suscribe” para recibir actualizaciones cuando el valor del sensor cambia.
+            </li>
+            <li>
+              <strong>Procesar la información</strong><br>
+              Los datos llegan como números (aceleración en m/s², orientación en grados, latitud/longitud…). La app los interpreta y actúa (actualizar UI, guardar, enviar a un servidor, etc.).
+            </li>
+            <li>
+              <strong>Liberar el sensor</strong><br>
+              Cuando ya no se necesita, se desregistra el listener para ahorrar batería.
+            </li>
+          </ol>
+          <div class="info-box">
+            <strong>Consejo importante:</strong> los sensores consumen batería. Usa la frecuencia de muestreo más baja que te sirva y detén la lectura cuando la app esté en segundo plano si no es necesario.
+          </div>
+        </div>
+
+        <div class="sources">
+          <h4>Fuentes y referencias</h4>
+          <ul>
+            <li><a href="https://developer.android.com/guide/topics/sensors/sensors_overview" target="_blank" rel="noopener">Android – Sensors Overview</a></li>
+            <li><a href="https://developer.apple.com/documentation/coremotion" target="_blank" rel="noopener">Apple – Core Motion</a></li>
+            <li><a href="https://developer.android.com/guide/topics/sensors/sensors_motion" target="_blank" rel="noopener">Android – Motion Sensors</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- MULTIMEDIA -->
+      <section id="multimedia" class="section">
+        <div class="section-header">
+          <span class="section-num">05</span>
+          <h2>Uso de Recursos Multimedia</h2>
+          <p class="section-subtitle">Imágenes, audio, video, animaciones y elementos visuales dinámicos</p>
+        </div>
+
+        <!-- Visual cyberpunk: multimedia -->
+        <div class="visual-panel">
+          <div class="visual-label"><span>◆</span> MEDIA RESOURCES · ASSETS</div>
+          <div class="visual-content">
+            <div class="media-icons">
+              <div class="media-icon-box" title="Imágenes">🖼️</div>
+              <div class="media-icon-box" title="Audio">🎵</div>
+              <div class="media-icon-box" title="Video">🎬</div>
+              <div class="media-icon-box" title="Animaciones">✨</div>
+              <div class="media-icon-box" title="UI dinámica">◈</div>
+            </div>
+            <div class="diagram">
+              <div class="diag-node">res/drawable</div>
+              <span class="diag-arrow">·</span>
+              <div class="diag-node">assets/</div>
+              <span class="diag-arrow">·</span>
+              <div class="diag-node main">raw/</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>1. Definición</h3>
+          <p>Los <strong>recursos multimedia</strong> son todos los elementos de audio, video, imagen y animación que una aplicación utiliza para comunicarse con el usuario o mejorar la experiencia visual y sonora.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>2. Tipos de recursos multimedia en programación móvil</h3>
+          <ul>
+            <li><strong>Imágenes</strong>: PNG, JPEG, WebP, SVG (iconos, fondos, fotos).</li>
+            <li><strong>Audio</strong>: MP3, AAC, WAV, OGG (efectos de sonido, música, notas de voz).</li>
+            <li><strong>Video</strong>: MP4, WebM (tutoriales, trailers, contenido generado por el usuario).</li>
+            <li><strong>Animaciones</strong>: Lottie (JSON), GIF, animaciones nativas (Property Animation, Animated en React Native, etc.).</li>
+            <li><strong>Elementos visuales dinámicos</strong>: canvas, shaders, partículas, transiciones, mapas, gráficos en tiempo real.</li>
+          </ul>
+        </div>
+
+        <div class="content-block">
+          <h3>3. Dónde se almacenan en la estructura del proyecto</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Plataforma</th>
+                  <th>Ubicación típica</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Android</td>
+                  <td><code>res/drawable/</code>, <code>res/mipmap/</code>, <code>res/raw/</code>, <code>assets/</code></td>
+                </tr>
+                <tr>
+                  <td>iOS</td>
+                  <td><code>Assets.xcassets</code>, carpeta del proyecto, Bundle</td>
+                </tr>
+                <tr>
+                  <td>Flutter</td>
+                  <td>Carpeta <code>assets/</code> declarada en <code>pubspec.yaml</code></td>
+                </tr>
+                <tr>
+                  <td>React Native</td>
+                  <td>Carpeta del proyecto o <code>require('./imagen.png')</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>También se pueden descargar en tiempo de ejecución y guardar en el almacenamiento interno o externo del dispositivo.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>4. Componentes de software para usar multimedia</h3>
+          <ul>
+            <li><strong>Imágenes</strong>: <code>ImageView</code> (Android), <code>UIImageView</code> (iOS), componentes de Flutter/React Native.</li>
+            <li><strong>Audio</strong>: <code>MediaPlayer</code> / <code>ExoPlayer</code> (Android), <code>AVAudioPlayer</code> (iOS).</li>
+            <li><strong>Video</strong>: <code>VideoView</code> / ExoPlayer, <code>AVPlayer</code>.</li>
+            <li><strong>Animaciones</strong>: Lottie, MotionLayout, Animated API, Rive.</li>
+            <li><strong>Carga eficiente</strong>: Glide, Coil, Picasso (Android); SDWebImage (iOS); cached_network_image (Flutter).</li>
+          </ul>
+        </div>
+
+        <div class="sources">
+          <h4>Fuentes y referencias</h4>
+          <ul>
+            <li><a href="https://developer.android.com/guide/topics/media" target="_blank" rel="noopener">Android – Media apps overview</a></li>
+            <li><a href="https://developer.apple.com/documentation/avfoundation" target="_blank" rel="noopener">Apple – AVFoundation</a></li>
+            <li><a href="https://airbnb.io/lottie/" target="_blank" rel="noopener">Lottie (animaciones)</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SERVICIOS Y NOTIFICACIONES -->
+      <section id="servicios" class="section">
+        <div class="section-header">
+          <span class="section-num">06</span>
+          <h2>Servicios y Notificaciones</h2>
+          <p class="section-subtitle">Tareas en segundo plano, notificaciones y servicios en la nube</p>
+        </div>
+
+        <!-- Visual cyberpunk: servicios -->
+        <div class="visual-panel">
+          <div class="visual-label"><span>◆</span> BACKGROUND · NOTIFICATIONS · CLOUD</div>
+          <div class="visual-content">
+            <div class="cloud-stack">
+              <div class="cloud-layer">FCM / APNs</div>
+              <div class="cloud-layer">WorkManager / BG Tasks</div>
+              <div class="cloud-layer">Firebase · AWS · Azure</div>
+            </div>
+            <div class="hud-bars" aria-hidden="true">
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+              <div class="hud-bar"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>1. Definición</h3>
+          <p>Los <strong>servicios</strong> permiten que una app realice trabajo aunque el usuario no la esté mirando (descargas, sincronización, reproducción de música). Las <strong>notificaciones</strong> son mensajes que aparecen en la barra de estado o pantalla de bloqueo para informar al usuario.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>2. ¿Qué son las tareas en segundo plano?</h3>
+          <p>Son operaciones que continúan ejecutándose cuando la app está minimizada o la pantalla está apagada. Ejemplos:</p>
+          <ul>
+            <li>Subir una foto a la nube.</li>
+            <li>Sincronizar mensajes.</li>
+            <li>Reproducir música.</li>
+            <li>Obtener la ubicación periódicamente.</li>
+          </ul>
+          <p>Los sistemas operativos limitan estas tareas para ahorrar batería (Doze en Android, Background App Refresh en iOS).</p>
+        </div>
+
+        <div class="content-block">
+          <h3>3. Tratamiento de notificaciones</h3>
+          <p>Flujo típico:</p>
+          <ol class="steps">
+            <li>La app solicita permiso al usuario para mostrar notificaciones.</li>
+            <li>Se crea un canal de notificación (Android 8+) con importancia y sonido.</li>
+            <li>Cuando hay un evento (mensaje nuevo, recordatorio…), se construye la notificación y se muestra.</li>
+            <li>El usuario puede tocar la notificación → la app se abre en la pantalla correspondiente.</li>
+          </ol>
+          <p>También existen notificaciones push enviadas desde un servidor (Firebase Cloud Messaging, Apple Push Notification service).</p>
+        </div>
+
+        <div class="content-block">
+          <h3>4. Proceso de implementación (resumen)</h3>
+          <ul>
+            <li><strong>Proveedores de contenido (Content Providers)</strong>: permiten compartir datos entre apps de forma segura (Android).</li>
+            <li><strong>Tareas en segundo plano</strong>: WorkManager (Android), BackgroundTasks (iOS), servicios foreground cuando es necesario.</li>
+            <li><strong>Notificaciones</strong>: NotificationManager + canales (Android), UNUserNotificationCenter (iOS).</li>
+          </ul>
+        </div>
+
+        <div class="content-block">
+          <h3>5. Servicios de cómputo en la nube aplicables</h3>
+          <ul>
+            <li><strong>Firebase</strong> (Google): autenticación, base de datos, almacenamiento, Cloud Messaging, Functions.</li>
+            <li><strong>AWS Amplify / Cognito / S3 / Lambda</strong>.</li>
+            <li><strong>Azure Mobile Apps / Notification Hubs</strong>.</li>
+            <li><strong>Supabase, Appwrite</strong> (alternativas open source).</li>
+            <li><strong>Google Cloud / Cloud Run</strong> para backends personalizados.</li>
+          </ul>
+        </div>
+
+        <div class="sources">
+          <h4>Fuentes y referencias</h4>
+          <ul>
+            <li><a href="https://developer.android.com/guide/background" target="_blank" rel="noopener">Android – Background work</a></li>
+            <li><a href="https://developer.android.com/guide/topics/ui/notifiers/notifications" target="_blank" rel="noopener">Android – Notifications</a></li>
+            <li><a href="https://firebase.google.com/docs/cloud-messaging" target="_blank" rel="noopener">Firebase Cloud Messaging</a></li>
+            <li><a href="https://developer.apple.com/documentation/usernotifications" target="_blank" rel="noopener">Apple – User Notifications</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- LIBRERÍAS Y TOOLKITS -->
+      <section id="librerias" class="section">
+        <div class="section-header">
+          <span class="section-num">07</span>
+          <h2>Librerías y Toolkits</h2>
+          <p class="section-subtitle">Qué son y cuáles son las más útiles en desarrollo móvil</p>
+        </div>
+
+        <!-- Visual cyberpunk: librerías -->
+        <div class="visual-panel">
+          <div class="visual-label"><span>◆</span> LIBRARIES · TOOLKITS · FRAMEWORKS</div>
+          <div class="visual-content">
+            <div class="toolkit-row">
+              <span class="toolkit-badge">Jetpack</span>
+              <span class="toolkit-badge">Flutter</span>
+              <span class="toolkit-badge">React Native</span>
+              <span class="toolkit-badge">SwiftUI</span>
+              <span class="toolkit-badge">Room</span>
+              <span class="toolkit-badge">Retrofit</span>
+              <span class="toolkit-badge">Lottie</span>
+              <span class="toolkit-badge">Hilt</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>1. ¿Qué es una librería y qué es un toolkit?</h3>
+          <div class="card-grid">
+            <div class="card">
+              <div class="card-title">Librería (Library)</div>
+              <p>Conjunto de código reutilizable que resuelve un problema concreto. Tú la llamas desde tu código.</p>
+              <p><strong>Ejemplo:</strong> una librería para cargar imágenes desde internet (Glide, Coil).</p>
+            </div>
+            <div class="card">
+              <div class="card-title">Toolkit</div>
+              <p>Conjunto más amplio de herramientas, componentes y a veces un framework completo orientado a un tipo de desarrollo.</p>
+              <p><strong>Ejemplo:</strong> Jetpack (Android), UIKit / SwiftUI (iOS), Flutter SDK.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>2. Librerías de funciones especializadas (ejemplos)</h3>
+          <ul>
+            <li><strong>Red</strong>: Retrofit, OkHttp, Alamofire, Dio.</li>
+            <li><strong>Imágenes</strong>: Glide, Coil, Picasso, SDWebImage, cached_network_image.</li>
+            <li><strong>Base de datos</strong>: Room, Realm, ObjectBox, Hive.</li>
+            <li><strong>Inyección de dependencias</strong>: Hilt, Dagger, Koin, GetIt.</li>
+            <li><strong>UI / animaciones</strong>: Lottie, MotionLayout, Rive.</li>
+            <li><strong>Serialización</strong>: Gson, Moshi, Kotlinx.serialization, Codable.</li>
+          </ul>
+        </div>
+
+        <div class="content-block">
+          <h3>3. Diferenciar toolkits aplicables a programación móvil</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Toolkit / Framework</th>
+                  <th>Característica principal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Android Jetpack</td>
+                  <td>Conjunto oficial de librerías Android (Architecture, UI, Behavior…)</td>
+                </tr>
+                <tr>
+                  <td>SwiftUI / UIKit</td>
+                  <td>Herramientas oficiales de interfaz de iOS</td>
+                </tr>
+                <tr>
+                  <td>Flutter</td>
+                  <td>UI multiplataforma con un solo código (Dart)</td>
+                </tr>
+                <tr>
+                  <td>React Native</td>
+                  <td>UI multiplataforma usando JavaScript/TypeScript y React</td>
+                </tr>
+                <tr>
+                  <td>Xamarin / .NET MAUI</td>
+                  <td>Multiplataforma con C#</td>
+                </tr>
+                <tr>
+                  <td>Kotlin Multiplatform</td>
+                  <td>Comparte lógica de negocio entre Android, iOS y más</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="sources">
+          <h4>Fuentes y referencias</h4>
+          <ul>
+            <li><a href="https://developer.android.com/jetpack" target="_blank" rel="noopener">Android Jetpack</a></li>
+            <li><a href="https://flutter.dev/" target="_blank" rel="noopener">Flutter</a></li>
+            <li><a href="https://reactnative.dev/" target="_blank" rel="noopener">React Native</a></li>
+            <li><a href="https://developer.apple.com/xcode/swiftui/" target="_blank" rel="noopener">SwiftUI</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- DEPURACIÓN Y SEGURIDAD -->
+      <section id="depuracion" class="section">
+        <div class="section-header">
+          <span class="section-num">08</span>
+          <h2>Depuración y Seguridad</h2>
+          <p class="section-subtitle">Encontrar errores y proteger la aplicación y los datos del usuario</p>
+        </div>
+
+        <!-- Visual cyberpunk: depuración -->
+        <div class="visual-panel">
+          <div class="visual-label"><span>◆</span> DEBUG · SECURITY · PROFILER</div>
+          <div class="visual-content">
+            <div class="debug-grid">
+              <div class="debug-cell">
+                <span class="dbg-title">LOGCAT / CONSOLE</span>
+                <span class="dbg-val">● ACTIVE</span>
+              </div>
+              <div class="debug-cell">
+                <span class="dbg-title">BREAKPOINTS</span>
+                <span class="dbg-val">3 HIT</span>
+              </div>
+              <div class="debug-cell">
+                <span class="dbg-title">CPU / MEMORY</span>
+                <span class="dbg-val">OK</span>
+              </div>
+              <div class="debug-cell">
+                <span class="dbg-title">HTTPS / KEYSTORE</span>
+                <span class="dbg-val">SECURE</span>
+              </div>
+            </div>
+            <div class="orbit-ring">
+              <div class="orbit-core"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>1. ¿Qué es la depuración y la seguridad?</h3>
+          <p><strong>Depuración (debugging)</strong> es el proceso de encontrar y corregir errores (bugs) en el código. Se usa el depurador del IDE, logs, puntos de interrupción (breakpoints) y herramientas de análisis.</p>
+          <p><strong>Seguridad</strong> abarca todas las medidas para proteger la app, los datos del usuario y la comunicación con servidores: cifrado, autenticación, almacenamiento seguro, protección contra ingeniería inversa, etc.</p>
+        </div>
+
+        <div class="content-block">
+          <h3>2. Herramientas de depuración incluidas en el entorno de desarrollo móvil</h3>
+          <div class="card-grid">
+            <div class="card">
+              <div class="card-title">Android Studio</div>
+              <ul>
+                <li>Debugger integrado</li>
+                <li>Logcat (logs en tiempo real)</li>
+                <li>Layout Inspector</li>
+                <li>Profiler (CPU, memoria, red, batería)</li>
+                <li>Network Inspector</li>
+                <li>APK Analyzer</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-title">Xcode (iOS)</div>
+              <ul>
+                <li>LLDB debugger</li>
+                <li>Console y os_log</li>
+                <li>View Hierarchy Debugger</li>
+                <li>Instruments (tiempo, memoria, energía)</li>
+                <li>Network Link Conditioner</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="card-title">Flutter / React Native</div>
+              <ul>
+                <li>Flutter DevTools</li>
+                <li>React Native Debugger</li>
+                <li>Chrome DevTools (para JS)</li>
+                <li>Hot Reload / Fast Refresh</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>3. Buenas prácticas de seguridad (resumen)</h3>
+          <ul>
+            <li>Nunca guardes contraseñas o tokens en texto plano.</li>
+            <li>Usa HTTPS siempre (Certificate Pinning cuando sea posible).</li>
+            <li>Almacena datos sensibles en Keychain (iOS) o EncryptedSharedPreferences / Keystore (Android).</li>
+            <li>Valida y sanitiza cualquier dato que venga del usuario o de la red.</li>
+            <li>Mantén las librerías actualizadas.</li>
+            <li>Ofusca el código en las versiones de producción (ProGuard / R8, bitcode, etc.).</li>
+          </ul>
+        </div>
+
+        <div class="sources">
+          <h4>Fuentes y referencias</h4>
+          <ul>
+            <li><a href="https://developer.android.com/studio/debug" target="_blank" rel="noopener">Android Studio – Debug your app</a></li>
+            <li><a href="https://developer.apple.com/documentation/xcode/debugging" target="_blank" rel="noopener">Xcode – Debugging</a></li>
+            <li><a href="https://owasp.org/www-project-mobile-security/" target="_blank" rel="noopener">OWASP Mobile Security</a></li>
+            <li><a href="https://developer.android.com/topic/security/best-practices" target="_blank" rel="noopener">Android – Security best practices</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- Sidebar derecha -->
+    <aside class="sidebar sidebar-right">
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-icon">◉</span>
+          <span>TEMAS RÁPIDOS</span>
+        </div>
+        <div class="quick-links">
+          <a href="#control-versiones" class="quick-link">Git & SVN</a>
+          <a href="#persistencia" class="quick-link">SQLite & Room</a>
+          <a href="#sensores" class="quick-link">Acelerómetro</a>
+          <a href="#multimedia" class="quick-link">Lottie & Media</a>
+          <a href="#servicios" class="quick-link">FCM & WorkManager</a>
+          <a href="#librerias" class="quick-link">Jetpack & Flutter</a>
+          <a href="#depuracion" class="quick-link">Logcat & LLDB</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-icon">◈</span>
+          <span>CONSEJO</span>
+        </div>
+        <p class="tip-text">Lee cada sección con calma. Los conceptos se construyen uno sobre otro. Usa los enlaces de “Fuentes” para profundizar cuando lo necesites.</p>
+      </div>
+
+      <div class="panel hud-panel">
+        <div class="panel-header">
+          <span class="panel-icon">▣</span>
+          <span>HUD</span>
+        </div>
+        <div class="hud-stats">
+          <div class="hud-item">
+            <span class="hud-label">SECCIONES</span>
+            <span class="hud-value" id="sectionCounter">01 / 08</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">SCROLL</span>
+            <span class="hud-value" id="scrollPercent">0%</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">◆ MOBILE DEV TUTORIAL</span>
+        <span class="footer-copy">Actividad 12/11/2026 · HTML + CSS + JavaScript</span>
+      </div>
+      <div class="footer-right">
+        <span>Diseño cyberpunk azul · Contenido educativo</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
